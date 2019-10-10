@@ -25,8 +25,6 @@
                     [:ul
                      [:li "Open DevTools"] [:li "Go to Settings (\"three dots\" icon in the upper right corner of DevTools > Menu > Settings F1 > General > Console)"] [:li "Check-in \"Enable custom formatters\""] [:li "Close DevTools"] [:li "Open DevTools"]]
                     [:p "See" [:a {:href "http://www.luminusweb.net/docs/clojurescript.md"} "ClojureScript"] "documentation for further details."]]]]]
-                [:link {:href "/assets/bulma/css/bulma.min.css" :rel "stylesheet" :type "text/css"}]
-                [:link {:href "/assets/material-icons/css/material-icons.min.css" :rel "stylesheet" :type "text/css"}]
                 [:link {:href "/css/screen.css" :rel "stylesheet" :type "text/css"}]
                 [:script {:type "text/javascript"} (str "var csrfToken = \" " *anti-forgery-token* ";\"")]
                 [:script {:src "/js/app.js" :type "text/javascript"}]]]))

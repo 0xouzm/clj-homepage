@@ -19,6 +19,7 @@
     (ring/router
       [(home-routes)])
     (ring/routes
+      ; static files
       (ring/create-resource-handler
         {:path "/"})
       (wrap-content-type

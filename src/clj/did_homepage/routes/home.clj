@@ -9,10 +9,10 @@
 
 
 (defn home-page [request]
-  (render-home request ))
+  (render-home request))
 
 (defn fire-page [request]
-  (render-fire request ))
+  (render-fire request))
 
 (defn home-routes []
   [""

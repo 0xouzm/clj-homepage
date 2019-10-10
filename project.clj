@@ -28,8 +28,7 @@
                  [org.clojure/google-closure-library "0.0-20190213-2033d5d9" :scope "provided"]
                  [org.clojure/tools.cli "0.4.2"]
                  [org.clojure/tools.logging "0.5.0"]
-                 [org.webjars.npm/bulma "0.7.5"]
-                 [org.webjars.npm/material-icons "0.3.0"]
+                 ; useless
                  [org.webjars/webjars-locator "0.36"]
                  [re-frame "0.10.8"]
                  [reagent "0.8.1"]
@@ -41,7 +40,7 @@
                  [thheller/shadow-cljs "2.8.39" :scope "provided"]]
 
   :min-lein-version "2.0.0"
-  
+
   :source-paths ["src/clj" "src/cljs" "src/cljc"]
   :test-paths ["test/clj"]
   :resource-paths ["resources" "target/cljsbuild"]
@@ -55,11 +54,11 @@
    [{:src "resources/scss/screen.scss"
      :output-to "resources/public/css/screen.css"
      :style "nested"
-     :import-path "resources/scss"}] 
-  
+     :import-path "resources/scss"}]
+
    :auto
-   {"sassc" {:file-pattern #"\.(scss|sass)$" :paths ["resources/scss"]}} 
-  
+   {"sassc" {:file-pattern #"\.(scss|sass)$" :paths ["resources/scss"]}}
+
   :hooks [leiningen.sassc]
   :clean-targets ^{:protect false}
   [:target-path "target/cljsbuild"]
@@ -79,8 +78,9 @@
     {:target :node-test
      :output-to "target/test/test.js"
      :autorun true}}}
-  
+
   :npm-deps [[shadow-cljs "2.8.39"]
+             [bulma "0.7.5"]
              [create-react-class "15.6.3"]
              [react "16.8.6"]
              [react-dom "16.8.6"]]
@@ -88,7 +88,7 @@
   :profiles
   {:uberjar {:omit-source true
              :prep-tasks ["compile" ["shadow" "release" "app"]]
-             
+
              :aot :all
              :uberjar-name "did-homepage.jar"
              :source-paths ["env/prod/clj" "env/prod/cljs"]
@@ -106,17 +106,17 @@
                                  [ring/ring-devel "1.7.1"]
                                  [ring/ring-mock "0.4.0"]]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.24.1"]]
-                  
-                  
+
+
                   :source-paths ["env/dev/clj" "env/dev/cljs" "test/cljs"]
                   :resource-paths ["env/dev/resources"]
                   :repl-options {:init-ns user}
                   :injections [(require 'pjstadig.humane-test-output)
                                (pjstadig.humane-test-output/activate!)]}
    :project/test {:jvm-opts ["-Dconf=test-config.edn"]
-                  :resource-paths ["env/test/resources"]
-                  
-                  
-                  }
+                  :resource-paths ["env/test/resources"]}
+
+
+
    :profiles/dev {}
    :profiles/test {}})
