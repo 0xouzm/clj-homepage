@@ -1,4 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+.horizontal-logos-flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
 /*! bulma.io v0.7.5 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
@@ -6956,3 +6962,5 @@ label.panel-block {
 .footer {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem; }
+
+/*# sourceMappingURL=screen.css.map */

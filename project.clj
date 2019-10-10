@@ -28,7 +28,6 @@
                  [org.clojure/google-closure-library "0.0-20190213-2033d5d9" :scope "provided"]
                  [org.clojure/tools.cli "0.4.2"]
                  [org.clojure/tools.logging "0.5.0"]
-                 ; useless
                  [org.webjars/webjars-locator "0.36"]
                  [re-frame "0.10.8"]
                  [reagent "0.8.1"]
@@ -48,36 +47,29 @@
   :main ^:skip-aot did-homepage.core
 
   :plugins [[lein-shadow "0.1.5"]
-            [lein-sassc "0.10.4"]
-            [lein-auto "0.1.2"]]
-   :sassc
-   [{:src "resources/scss/screen.scss"
-     :output-to "resources/public/css/screen.css"
-     :style "nested"
-     :import-path "resources/scss"}]
+            [lein-sass "0.5.0"]]
 
-   :auto
-   {"sassc" {:file-pattern #"\.(scss|sass)$" :paths ["resources/scss"]}}
+  :sass {:src "resources/sass"
+         :output-directory "resources/public/css"}
 
-  :hooks [leiningen.sassc]
   :clean-targets ^{:protect false}
   [:target-path "target/cljsbuild"]
   :shadow-cljs
   {:nrepl {:port 7002}
    :builds
-   {:app
-    {:target :browser
-     :output-dir "target/cljsbuild/public/js"
-     :asset-path "/js"
-     :modules {:app {:entries [did-homepage.app]}}
-     :devtools
-     {:watch-dir "resources/public" :preloads [re-frisk.preload]}
-     :dev
-     {:closure-defines {"re_frame.trace.trace_enabled_QMARK_" true}}}
-    :test
-    {:target :node-test
-     :output-to "target/test/test.js"
-     :autorun true}}}
+          {:app
+           {:target     :browser
+            :output-dir "target/cljsbuild/public/js"
+            :asset-path "/js"
+            :modules    {:app {:entries [did-homepage.app]}}
+            :devtools
+                        {:watch-dir "resources/public" :preloads [re-frisk.preload]}
+            :dev
+                        {:closure-defines {"re_frame.trace.trace_enabled_QMARK_" true}}}
+           :test
+           {:target    :node-test
+            :output-to "target/test/test.js"
+            :autorun   true}}}
 
   :npm-deps [[shadow-cljs "2.8.39"]
              [bulma "0.7.5"]
@@ -86,37 +78,37 @@
              [react-dom "16.8.6"]]
 
   :profiles
-  {:uberjar {:omit-source true
-             :prep-tasks ["compile" ["shadow" "release" "app"]]
+  {:uberjar       {:omit-source    true
+                   :prep-tasks     ["compile" ["shadow" "release" "app"]]
 
-             :aot :all
-             :uberjar-name "did-homepage.jar"
-             :source-paths ["env/prod/clj" "env/prod/cljs"]
-             :resource-paths ["env/prod/resources"]}
+                   :aot            :all
+                   :uberjar-name   "did-homepage.jar"
+                   :source-paths   ["env/prod/clj" "env/prod/cljs"]
+                   :resource-paths ["env/prod/resources"]}
 
    :dev           [:project/dev :profiles/dev]
    :test          [:project/dev :project/test :profiles/test]
 
-   :project/dev  {:jvm-opts ["-Dconf=dev-config.edn"]
-                  :dependencies [[binaryage/devtools "0.9.10"]
-                                 [cider/piggieback "0.4.1"]
-                                 [pjstadig/humane-test-output "0.9.0"]
-                                 [prone "2019-07-08"]
-                                 [re-frisk "0.5.4.1"]
-                                 [ring/ring-devel "1.7.1"]
-                                 [ring/ring-mock "0.4.0"]]
-                  :plugins      [[com.jakemccrary/lein-test-refresh "0.24.1"]]
+   :project/dev   {:jvm-opts       ["-Dconf=dev-config.edn"]
+                   :dependencies   [[binaryage/devtools "0.9.10"]
+                                    [cider/piggieback "0.4.1"]
+                                    [pjstadig/humane-test-output "0.9.0"]
+                                    [prone "2019-07-08"]
+                                    [re-frisk "0.5.4.1"]
+                                    [ring/ring-devel "1.7.1"]
+                                    [ring/ring-mock "0.4.0"]]
+                   :plugins        [[com.jakemccrary/lein-test-refresh "0.24.1"]]
 
 
-                  :source-paths ["env/dev/clj" "env/dev/cljs" "test/cljs"]
-                  :resource-paths ["env/dev/resources"]
-                  :repl-options {:init-ns user}
-                  :injections [(require 'pjstadig.humane-test-output)
-                               (pjstadig.humane-test-output/activate!)]}
-   :project/test {:jvm-opts ["-Dconf=test-config.edn"]
-                  :resource-paths ["env/test/resources"]}
+                   :source-paths   ["env/dev/clj" "env/dev/cljs" "test/cljs"]
+                   :resource-paths ["env/dev/resources"]
+                   :repl-options   {:init-ns user}
+                   :injections     [(require 'pjstadig.humane-test-output)
+                                    (pjstadig.humane-test-output/activate!)]}
+   :project/test  {:jvm-opts       ["-Dconf=test-config.edn"]
+                   :resource-paths ["env/test/resources"]}
 
 
 
-   :profiles/dev {}
+   :profiles/dev  {}
    :profiles/test {}})

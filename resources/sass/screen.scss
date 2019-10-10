@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+.horizontal-logos-flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+@import "../../node_modules/bulma/bulma.sass";
