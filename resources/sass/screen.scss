@@ -4,12 +4,80 @@ $tabs-link-active-border-bottom-color: #04AA51;
 $tabs-link-active-color: #343434;
 $tabs-link-hover-border-bottom-color: none;
 $tabs-link-padding: 20px 50px;
+$fullhd: 1200px;
+$success: #04AA51;
+$button-hover-color: #2ABD4A;
+* {
+  box-sizing: border-box;
+}
+
 .horizontal-logos-flex-container {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.price-calculator-preview {
+  min-height: 515px;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+}
+
+.price-calculator-preview:last-child {
+  border-right: 1px solid #ddd;
+}
+
+.calculator-preview-heading {
+  text-align: center;
+  box-shadow: 0px 1px 0px 0px #ddd;
+  padding: 20px;
+  background-image: url(https://d3r49iyjzglexf.cloudfront.net/pricing/pricing-card-bg-c720d6361aee3eab54c4d1783a1f725e81c650bd04e9a972d80cbe4858695d3f.svg);
+  background-size: 85%;
+  border-radius: 3px 3px 0 0;
+}
+
+.featured {
+  border: 3px solid #04AA51;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(4, 170, 81, 0.2);
+}
+
+.feature-flag {
+  background-color: #04AA51;
+  width: 100%;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 10px 10px 10px;
+}
+
+.calculator-preview-item {
+  margin: 20px 15px;
+  text-align: center;
+}
+
+.pricing-action {
+  text-align: center;
+  margin: 20px ;
+}
+.price-btn {
+  margin-top: 20px;
+  width:160px;
+}
+.value {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.osx-page .columns {
+  margin-top: 50px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 @import "../../node_modules/bulma/bulma.sass";
