@@ -5169,16 +5169,16 @@ label.panel-block {
     display: flex;
     justify-content: center;
     margin-bottom: -1px;
-    padding: 0.5em 1em;
+    padding: 20px 50px;
     vertical-align: top; }
     .tabs a:hover {
-      border-bottom-color: #363636;
+      border-bottom-color: none;
       color: #363636; }
   .tabs li {
     display: block; }
     .tabs li.is-active a {
-      border-bottom-color: #3273dc;
-      color: #3273dc; }
+      border-bottom-color: #04AA51;
+      color: #343434; }
   .tabs ul {
     align-items: center;
     border-bottom-color: #dbdbdb;

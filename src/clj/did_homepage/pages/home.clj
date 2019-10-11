@@ -6,7 +6,7 @@
   [:nav.navbar.is-fixed-top.is-transparent.is-black {:role "navigation" :aria-label "main navigation"}
    [:div.container
     [:div.navbar-brand
-     [:a.navbar-item {:href "http://localhost:4000"}
+     [:a.navbar-item {:href "http://localhost:3000"}
       [:img {:src "https://d3r49iyjzglexf.cloudfront.net/logo-wordmark-26f8eaea9b0f6e13b90d3f4a8fd8fda31490f5af41daab98bbede45037682576.svg" :width "112" :height "28"}]]
      [:a.navbar-burger.burger {:role "button" :aria-label "menu" :aria-expanded "false" :data-target "navbarBasicExample"}
       [:span {:aria-hidden "true"}]
@@ -30,8 +30,8 @@
        [:div.buttons
         [:a.button.is-primary
          [:strong "Sign up"]]
-        [:a.button.is-light "Log in"]]]]]]]
-  )
+        [:a.button.is-light "Log in"]]]]]]])
+
 
 
 

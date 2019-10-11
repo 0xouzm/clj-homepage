@@ -15,6 +15,7 @@
   (fn [db [_ error]]
     (assoc db :common/error error)))
 
+
 ;;subscriptions
 
 (rf/reg-sub

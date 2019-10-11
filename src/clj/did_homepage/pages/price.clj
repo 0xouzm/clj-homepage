@@ -13,13 +13,16 @@
     [:title "did-homepage"]]
    [:body
     (navbar)
-    [:section.hero.is-medium.is-bold
+    [:section.hero.is-medium
      [:div.hero-body
       [:div.container
        [:h1.title. "Great teams trust & use CircleCI"]
        [:h2.subtitle "Fast. Functional. Flexible. Join thousands of other developer teams in trusting CircleCI for your testing and CI/CD needs."]]]]]
-   [:link {:href "/css/screen.css" :rel "stylesheet" :type "text/css"}]])
-;[:script {:src "/js/app.js" :type "text/javascript"}]]])
+
+   [:div#app]
+   [:link {:href "/css/screen.css" :rel "stylesheet" :type "text/css"}]
+   [:script {:src "/js/app.js" :type "text/javascript"}]])
+
 
 
 

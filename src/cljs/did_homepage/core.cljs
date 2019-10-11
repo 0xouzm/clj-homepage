@@ -12,43 +12,37 @@
     [clojure.string :as string])
   (:import goog.History))
 
-(defn nav-link [uri title page]
-  [:a.navbar-item
-   {:href   uri
-    :class (when (= page @(rf/subscribe [:page])) :is-active)}
-   title])
+(defn tab-link [uri title page]
+  [:li {:class (when (= page @(rf/subscribe [:page])) :is-active)}
+   [:a {:href uri} title]])
 
-(defn navbar []
-  (r/with-let [expanded? (r/atom false)]
-    [:nav.navbar.is-info>div.container
-     [:div.navbar-brand
-      [:a.navbar-item {:href "/" :style {:font-weight :bold}} "did-homepage"]
-      [:span.navbar-burger.burger
-       {:data-target :nav-menu
-        :on-click #(swap! expanded? not)
-        :class (when @expanded? :is-active)}
-       [:span][:span][:span]]]
-     [:div#nav-menu.navbar-menu
-      {:class (when @expanded? :is-active)}
-      [:div.navbar-start
-       [nav-link "#/" "Home" :home]
-       [nav-link "#/about" "About" :about]]]]))
+(defn tabbar []
+  [:div.tabs.is-centered
+   [:ul
+    [tab-link "#/build-linux" "Build on Linux" :linux]
+    [tab-link "#/build-os-x" "Build on macOX" :osx]
+    [tab-link "#/build-enterprise" "Self-hosted" :enterprise]]])
 
-(defn about-page []
+(defn linux-page []
   [:section.section>div.container>div.content
-   [:img {:src "/img/warning_clojure.png"}]])
-
-(defn home-page []
+   "1"])
+(defn osx-page []
   [:section.section>div.container>div.content
-   "home"])
+   "2"])
+(defn enterprise-page []
+  [:section.section>div.container>div.content
+   "3"])
 
 (def pages
-  {:home #'home-page
-   :about #'about-page})
+  {
+   :linux      #'linux-page
+   :osx        #'osx-page
+   :enterprise #'enterprise-page})
+
 
 (defn page []
   [:div
-   [navbar]
+   [tabbar]
    [(pages @(rf/subscribe [:page]))]])
 
 ;; -------------------------
@@ -56,8 +50,11 @@
 
 (def router
   (reitit/router
-    [["/" :home]
-     ["/about" :about]]))
+    [
+     ["/build-linux" :linux]
+     ["/build-os-x" :osx]
+     ["/build-enterprise" :enterprise]]))
+
 
 ;; -------------------------
 ;; History
@@ -78,9 +75,9 @@
   (rf/clear-subscription-cache!)
   (r/render [#'page] (.getElementById js/document "app")))
 
-(defn init! []
-  (rf/dispatch-sync [:navigate (reitit/match-by-name router :home)])
 
+(defn init! []
+  (rf/dispatch-sync [:navigate (reitit/match-by-name router :linux)])
   (ajax/load-interceptors!)
   (hook-browser-navigation!)
   (mount-components))
