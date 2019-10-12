@@ -15,7 +15,7 @@
     [:div#navbarBasicExample.navbar-menu
      [:div.navbar-start
       [:a.navbar-item "Home"]
-      [:a.navbar-item {:href "http://localhost:3000/price"} "Price"]
+      [:a.navbar-item {:href "http://localhost:3000/price#/build-linux"} "Price"]
       [:a.navbar-item "Documentation"]
       [:div.navbar-item.has-dropdown.is-hoverable
        [:a.navbar-link "More"]

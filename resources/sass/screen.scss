@@ -19,6 +19,14 @@ $button-hover-color: #2ABD4A;
   flex-wrap: wrap;
 }
 
+.tabs li.is-active a {
+  font-weight: bold;
+  border-bottom-width: 4px;
+}
+.tabs li a {
+  border-bottom-width: 0px;
+}
+
 .price-calculator-preview {
   min-height: 515px;
   border-bottom: 1px solid #ddd;
@@ -63,12 +71,14 @@ $button-hover-color: #2ABD4A;
 
 .pricing-action {
   text-align: center;
-  margin: 20px ;
+  margin: 20px;
 }
+
 .price-btn {
   margin-top: 20px;
-  width:160px;
+  width: 160px;
 }
+
 .value {
   font-weight: 600;
   white-space: nowrap;

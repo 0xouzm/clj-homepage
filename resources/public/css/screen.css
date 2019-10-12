@@ -8,6 +8,13 @@
   flex-direction: row;
   flex-wrap: wrap; }
 
+.tabs li.is-active a {
+  font-weight: bold;
+  border-bottom-width: 4px; }
+
+.tabs li a {
+  border-bottom-width: 0px; }
+
 .price-calculator-preview {
   min-height: 515px;
   border-bottom: 1px solid #ddd;

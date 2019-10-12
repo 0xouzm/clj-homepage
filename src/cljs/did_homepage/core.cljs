@@ -26,6 +26,7 @@
 (defn linux-page []
   [:section.section>div.container>div.content
    "1"])
+
 (defn price-item [is-featured]
   [:div.column.price-calculator-preview.is-marginless.is-paddingless.has-text-black-bis {:class (when (= "featured" is-featured) "featured")}
    [:div.calculator-preview-heading
@@ -40,19 +41,19 @@
    [:div.calculator-preview-item "Recommended for " [:span.value "1-2"] "  team members"]
    [:div.pricing-action
     [:a.is-success.button.is-medium.price-btn {:href "/signup/" :role "button" :data-optimizely "signup_button_clicked" :data-analytics-action "signup-clicked" :data-analytics-location "osx-pricing-tiles-seed"}
-     [:span.is-size-6.has-text-weight-bold "Sign Up"]]] (when (= "featured" is-featured) [:div.feature-flag "Free trial starts here"])
-   ])
+     [:span.is-size-6.has-text-weight-bold "Sign Up"]]] (when (= "featured" is-featured) [:div.feature-flag "Free trial starts here"])])
+
 (defn osx-page []
   [:div.container>div.content.osx-page
-   [:div.is-size-4.has-text-centered "Start with a Free 2-week macOS trial"]
+   [:div.is-size-4.has-text-centered.has-text-weight-semibold "Start with a Free 2-week macOS trial"]
    [:div.columns
     [price-item]
     [price-item]
     [price-item "featured"]
-    [price-item]
-    ]
-   [:div.section.has-text-centered "Interested in an " [:a.link "open-source discount"] "?"]
-   ])
+    [price-item]]
+
+   [:div.section.has-text-centered "Interested in an " [:a.link "open-source discount"] "?"]])
+
 (defn enterprise-page []
   [:section.section>div.container>div.content
    "3"])
@@ -101,7 +102,8 @@
 
 
 (defn init! []
-  (rf/dispatch-sync [:navigate (reitit/match-by-name router :linux)])
+  ; need to fix price initial page error!!
+  (rf/dispatch-sync [:navigate (reitit/match-by-name router :osx)])
   (ajax/load-interceptors!)
   (hook-browser-navigation!)
   (mount-components))
